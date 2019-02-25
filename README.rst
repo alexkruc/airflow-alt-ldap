@@ -45,6 +45,9 @@ bind_password = MyAwesomePassword
 # Set search_scope to one of them:  BASE, LEVEL , SUBTREE
 # Set search_scope to SUBTREE if using Active Directory, and not specifying an Organizational Unit
 search_scope = SUBTREE
+# Optional - Set airflow_user_attr as the argument you want airflow
+# to use as the user attribute
+airflow_user_attr = dn
 
 ```
 
