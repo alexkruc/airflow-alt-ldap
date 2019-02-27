@@ -274,7 +274,7 @@ def login(self, request):
         else:
             airflow_username = username
 
-        LOG.info("Using '%s' as the internal Airflow username", airflow_username)
+        LOG.info("User '%s' will be saved as '%s' as the internal Airflow username" % (username, airflow_username))
 
         user = session.query(models.User).filter(
             models.User.username == airflow_username).first()
@@ -284,8 +284,8 @@ def login(self, request):
                 username=airflow_username,
                 is_superuser=False)
 
-            # To resolve double login in the first time, as referenced in airflow-1021 ticket:
-            # https://mail-archives.apache.org/mod_mbox/airflow-commits/201806.mbox/%3CJIRA.13057844.1490093306000.127319.1528408802512@Atlassian.JIRA%3E
+            # Resolving double login for new users with LDAP, as referenced in AIRFLOW-1021 ticket:
+            # https://issues.apache.org/jira/browse/AIRFLOW-1021
             # If the user does not exist, we need to add it to the session, and then commit and merge the session.
             session.add(user)
 
