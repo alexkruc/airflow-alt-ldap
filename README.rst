@@ -45,8 +45,10 @@ bind_password = MyAwesomePassword
 # Set search_scope to one of them:  BASE, LEVEL , SUBTREE
 # Set search_scope to SUBTREE if using Active Directory, and not specifying an Organizational Unit
 search_scope = SUBTREE
-# Optional - Set airflow_user_attr as the argument you want airflow
-# to use as the user attribute
+# Optional - This parameter will control the way Airflow saves the username value in it's metadata store.
+# If you won't set this attribute, it will use the logging username as the default. If you want to
+# change that behaviour to an element from LDAP, set `airflow_user_attr` to that value.
+# For example:
 airflow_user_attr = dn
 
 ```
