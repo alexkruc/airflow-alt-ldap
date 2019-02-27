@@ -47,7 +47,7 @@ bind_password = MyAwesomePassword
 search_scope = SUBTREE
 # Optional - This parameter will control the way Airflow saves the username value in its metadata store.
 # If you won't set this attribute, it will use the logging username as the default. If you want to
-# change that behaviour to an element from LDAP, set `airflow_user_attr` to the ldap entry you want to use.
+# change that behaviour to an element from LDAP, set `airflow_user_attr` to the ldap key you want to use.
 # For example:
 airflow_user_attr = dn
 # Will make the user `foo` to be saved as `cn=foo,ou=bar,dc=baz,dc=com`
