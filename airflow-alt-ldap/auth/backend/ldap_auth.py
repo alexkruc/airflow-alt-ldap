@@ -268,13 +268,12 @@ def login(self, request):
             try:
                 airflow_username = ldap_user_entry[configuration.get("ldap", "airflow_user_attr")]
             except KeyError as e:
-                LOG.error("Could not value for airflow_user_attribute from LDAP. Please check airflow_user_attr "
-                          "in airflow.cfg")
+                LOG.error("Could not value for airflow_user_attribute from LDAP. Please check airflow_user_attr in airflow.cfg")
                 raise LdapException("Could not get proper value for airflow_user_attribute from the configuration file.")
         else:
             airflow_username = username
 
-        LOG.info("User '%s' will be saved as '%s' as the internal Airflow username" % (username, airflow_username))
+        LOG.info("User '%s' will be saved as '%s' in the internal Airflow DB" % (username, airflow_username))
 
         user = session.query(models.User).filter(
             models.User.username == airflow_username).first()
